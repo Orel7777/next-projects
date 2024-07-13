@@ -1,0 +1,18 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
+ */
+
+ /* global css */
+
+
+
+ header nav ul a{
+  color:white;
+  text-decoration: none;
+ }
+
+ header nav ul a:hover{
+  color:rgb(255, 0, 195);
+  text-decoration: none;
+ }
