@@ -3,7 +3,7 @@ import './bootstrap.min.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import NavBar from './components/NavBar'
-
+import {ContextProvider} from './studentsList/context/appContext'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -17,6 +17,7 @@ children,
 children: React.ReactNode
 }) {
 return (
+  <ContextProvider>
 <html lang="en">
 
 <body className={inter.className}>
@@ -24,5 +25,6 @@ return (
   {children}
   </body>
 </html>
+</ContextProvider>
 )
 }
