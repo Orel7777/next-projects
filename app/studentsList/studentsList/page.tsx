@@ -1,13 +1,13 @@
-/* eslint-disable react/jsx-key */
 
 "use client"
 
 import React, { useContext } from 'react'
 import {useAppContext} from '../context/appContext'
+
 export default function StudentsList() {
 
 
-  const {student_ar} = useAppContext();
+  const {student_ar,deleteStudent} = useAppContext();
   console.log(student_ar)
   return (
     <div className='container'>
@@ -23,14 +23,15 @@ export default function StudentsList() {
           </tr>
         </thead>
         <tbody>
-          {student_ar.map((item:any,i:any)=>{
+          {student_ar.map((item:Student,i:number)=>{
             return(
-            <tr>
+            <tr key={item.id}>
               <td>{i+1}</td>
               <td>{item.name}</td>
               <td>{item.score}</td>
               <td>{item.subject}</td>
-              <td><button className='btn btn-danger'>X</button></td>
+              <td><button onClick={()=>
+              {if(window.confirm(`Do you want to delete student: ${item.name}?`))deleteStudent(item.id)}} className='btn btn-danger'>X</button></td>
             </tr>
             )
           })}
