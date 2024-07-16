@@ -26,6 +26,7 @@ export default function StudentForm() {
 
   return (
     <div className="container">
+    
       <h1>Add new student</h1>
       <form onSubmit={onSub} className="col-md-6">
         <label>Name</label>
