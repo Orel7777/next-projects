@@ -7,7 +7,7 @@ const KEY_STUDENT = "key_of_student";
 export function ContextProvider({ children }: any) {
   const [student_ar, setStudentAr] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
     setStudentAr(localStorage[KEY_STUDENT] ? JSON.parse(localStorage[KEY_STUDENT]) : [])
   },[])
   const addStudent = (_item: Student) => {
@@ -21,17 +21,17 @@ export function ContextProvider({ children }: any) {
     saveToLocal(filter_ar);
   };
 
-  const updateStudent = (_id: any, _item: Student) => {
-    const temp_ar:any = [...student_ar, _item];
-    const editIndex = temp_ar.findIndex((item:any) => (item.id = _id));
+  const updateStudent = (_id:any,_item:Student) => {  
+    const temp_ar:any = [...student_ar];
+    const editIndex = temp_ar.findIndex((item:any) => item.id == _id)
     temp_ar[editIndex] = _item;
-    // setStudentAr(temp_ar);
+    // setStudentsAr(temp_ar);
     saveToLocal(temp_ar);
-  };
+  }
 
   const saveToLocal = (_ar: any) => {
     setStudentAr(_ar);
-    localStorage.setItem(KEY_STUDENT, JSON.stringify(_ar));
+    localStorage.setItem(KEY_STUDENT,JSON.stringify(_ar));
   };
   const val = {
     student_ar,
